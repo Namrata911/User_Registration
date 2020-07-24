@@ -37,3 +37,9 @@ echo "(Enter country code followed by space and 10 digit number)"
 pattern="^[0-9]{2}[ ]{1}[0-9]{10}$"
 read mobNo
 validateName "$mobNo" "$pattern"
+
+echo "Enter a valid password "
+echo "Password must be min 8 characters"
+read password
+pattern="^.{8,}$"
+validateName $password $pattern
