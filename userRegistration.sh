@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 function validateName(){
 name=$1
 pattern=$2
@@ -15,7 +15,7 @@ do
 		read name
 	fi
 done
-echo $name
+#echo $name
 }
 
 echo "Enter Valid First name (Starts with Capital letter and has min 3 characters)";
@@ -32,4 +32,8 @@ pattern="^[A-Za-z0-9]{1,}([._+-][0-9a-zA-Z]+)*[@]{1}[a-zA-Z0-9]{1,}\.[A-Za-z]{2,
 read email
 validateName $email $pattern
 
-
+echo "Enter a valid mobile number "
+echo "(Enter country code followed by space and 10 digit number)"
+pattern="^[0-9]{2}[ ]{1}[0-9]{10}$"
+read mobNo
+validateName "$mobNo" "$pattern"
