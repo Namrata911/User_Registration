@@ -46,7 +46,9 @@ while [ $flag -eq 0 ]
 do
 	read password
 	upperCasePttrn="[A-Z]{1,}"
-	if [[ ${#password} -ge 8 ]] && [[ $password =~ $upperCasePttrn ]]
+	numericPttrn="[0-9]{1,}"
+
+	if [[ ${#password} -ge 8 ]] && [[ $password =~ $upperCasePttrn ]] && [[ $password =~ $numericPttrn ]]
 	then
 		echo "Good! It is valid "
 		flag=1
