@@ -1,4 +1,5 @@
 #!/bin/bash
+LC_ALL=C #to set env for checking capital letters
 function validateName(){
 name=$1
 pattern=$2
@@ -28,7 +29,7 @@ read lastName ;
 validateName $lastName $pattern
 
 echo "Enter a valid Email Id"
-pattern="^[A-Za-z0-9]{1,}([._+-][0-9a-zA-Z]+)*[@]{1}[a-zA-Z0-9]{1,}\.[A-Za-z]{2,4}([.][a-zA-Z]{2}){0,1}$"
+pattern="^[A-Za-z0-9]{1,}([._+-][0-9a-zA-Z]+)*[@]{1}[a-zA-Z0-9]{1,}\.[A-Za-z]{2,4}([.][a-zA-Z]{2,3}){0,1}$"
 read email
 validateName $email $pattern
 
@@ -40,6 +41,17 @@ validateName "$mobNo" "$pattern"
 
 echo "Enter a valid password "
 echo "Password must be min 8 characters"
-read password
-pattern="^.{8,}$"
-validateName $password $pattern
+flag=0
+while [ $flag -eq 0 ]
+do
+	read password
+	upperCasePttrn="[A-Z]{1,}"
+	if [[ ${#password} -ge 8 ]] && [[ $password =~ $upperCasePttrn ]]
+	then
+		echo "Good! It is valid "
+		flag=1
+	else
+		echo "Opps! it is not valid "
+	fi
+done
+
