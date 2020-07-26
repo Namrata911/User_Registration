@@ -47,8 +47,8 @@ do
 	read password
 	upperCasePttrn="[A-Z]{1,}"
 	numericPttrn="[0-9]{1,}"
-
-	if [[ ${#password} -ge 8 ]] && [[ $password =~ $upperCasePttrn ]] && [[ $password =~ $numericPttrn ]]
+	splCharPttrn="[@\#\%\^\-\*\+\/\$\&]+" #It was not possible to match exactly 1 spl character, so just checking at least 1 spl char
+	if [[ ${#password} -ge 8 ]] && [[ $password =~ $upperCasePttrn ]] && [[ $password =~ $numericPttrn ]] && [[ $password =~ $splCharPttrn ]]
 	then
 		echo "Good! It is valid "
 		flag=1
